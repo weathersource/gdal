@@ -3,33 +3,23 @@
 [![CircleCI](https://circleci.com/gh/weathersource/gdal.svg?style=shield)](https://circleci.com/gh/weathersource/gdal)
 [![GoDoc](https://img.shields.io/badge/godoc-ref-blue.svg)](https://godoc.org/github.com/weathersource/gdal)
 
--------------
-About
--------------
+## About
 
 The gdal.go package provides a go wrapper for GDAL, the Geospatial Data Abstraction Library. More information about GDAL can be found at http://www.gdal.org
 
--------------
-Installation
--------------
+## Installation
 
-1) go get github.com/lukeroth/gdal
-2) Set the GDAL library and include directories to the appropriate locations.
-3) go build
+1. go get github.com/lukeroth/gdal
+2. Set the GDAL library and include directories to the appropriate locations.
+3. go build
 
--------------
-Compatibility
--------------
+## Compatibility
 
 This software has been tested most recently on Ubuntu 18.10, GDAL version 2.3.2.
 
--------------
-Examples
--------------
+## Examples
 
--------------
-Status (3/08/2019)
--------------
+## Status (3/08/2019)
 
 The majority of GDAL functionality exposed by the C API is available, as well as much of the OGR API.
 Most functionality is not covered by tests or benchmarks.
