@@ -1,5 +1,4 @@
 package gdal
-
 /*
 #include "go_gdal.h"
 #include "gdal_version.h"
@@ -19,6 +18,7 @@ import (
 /*      Spatial reference functions.                                    */
 /* -------------------------------------------------------------------- */
 
+// type SpatialReference
 type SpatialReference struct {
 	cval C.OGRSpatialReferenceH
 }
@@ -1170,6 +1170,7 @@ func CleanupSR() {
 /*      Coordinate transformation functions.                            */
 /* -------------------------------------------------------------------- */
 
+// type CoordinateTransform
 type CoordinateTransform struct {
 	cval C.OGRCoordinateTransformationH
 }

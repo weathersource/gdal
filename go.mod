@@ -1,3 +1,3 @@
-module github.com/lukeroth/gdal
+module github.com/weathersource/gdal
 
-go 1.13
+go 1.14

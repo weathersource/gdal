@@ -1,7 +1,4 @@
-
-
 package gdal
-
 /*
 #include "go_gdal.h"
 #include "go_ogr_wkb.h"
@@ -54,42 +51,52 @@ const (
 /*      Envelope functions                                              */
 /* -------------------------------------------------------------------- */
 
+// Envelope struct
 type Envelope struct {
     cval C.OGREnvelope
 }
 
+// function MinX
 func (env Envelope) MinX() float64 {
     return float64(env.cval.MinX)
 }
 
+// function MaxX
 func (env Envelope) MaxX() float64 {
     return float64(env.cval.MaxX)
 }
 
+// function MinY
 func (env Envelope) MinY() float64 {
     return float64(env.cval.MinY)
 }
 
+// function MaxY
 func (env Envelope) MaxY() float64 {
     return float64(env.cval.MaxY)
 }
 
+// function SetMinX
 func (env *Envelope) SetMinX(val float64) {
     env.cval.MinX = C.double(val)
 }
 
+// function SetMaxX
 func (env *Envelope) SetMaxX(val float64) {
     env.cval.MaxX = C.double(val)
 }
 
+// function SetMinY
 func (env *Envelope) SetMinY(val float64) {
     env.cval.MinY = C.double(val)
 }
 
+// function SetMaxY
 func (env *Envelope) SetMaxY(val float64) {
     env.cval.MaxY = C.double(val)
 }
 
+// function IsInit
 func (env Envelope) IsInit() bool {
     return env.cval.MinX != 0 || env.cval.MinY != 0 || env.cval.MaxX != 0 || env.cval.MaxY != 0
 }
@@ -186,6 +193,7 @@ func BoolToCInt(in bool) (out C.int) {
 /*      Geometry functions                                              */
 /* -------------------------------------------------------------------- */
 
+// Geometry struct
 type Geometry struct {
     cval C.OGRGeometryH
 }
@@ -540,6 +548,7 @@ func (geom Geometry) Union(other Geometry) Geometry {
     return Geometry{newGeom}
 }
 
+// function UnionCascaded
 func (geom Geometry) UnionCascaded() Geometry {
     newGeom := C.OGR_G_UnionCascaded(geom.cval)
     return Geometry{newGeom}
@@ -762,6 +771,7 @@ const (
     FT_Integer64List = FieldType(C.OFTInteger64List)
 )
 
+// type Justification
 type Justification int
 
 const (
@@ -770,10 +780,12 @@ const (
     J_Right     = Justification(C.OJRight)
 )
 
+// type FieldDefinition
 type FieldDefinition struct {
     cval C.OGRFieldDefnH
 }
 
+// type Field
 type Field struct {
     cval *C.OGRField
 }
@@ -889,6 +901,7 @@ func (ft FieldType) Name() string {
 /*      Feature definition functions                                    */
 /* -------------------------------------------------------------------- */
 
+// type FeatureDefinition
 type FeatureDefinition struct {
     cval C.OGRFeatureDefnH
 }
@@ -1002,6 +1015,7 @@ func (fd FeatureDefinition) ReferenceCount() int {
 /*      Feature functions                                               */
 /* -------------------------------------------------------------------- */
 
+// type Feature
 type Feature struct {
     cval C.OGRFeatureH
 }
@@ -1350,6 +1364,7 @@ func (feature Feature) IsNull() bool {
 /*      Layer functions                                                 */
 /* -------------------------------------------------------------------- */
 
+// type Layer
 type Layer struct {
     cval C.OGRLayerH
 }
@@ -1566,6 +1581,7 @@ func (layer Layer) SetIgnoredFields(names []string) error {
 /*      Data source functions                                           */
 /* -------------------------------------------------------------------- */
 
+// type DataSource
 type DataSource struct {
     cval C.OGRDataSourceH
 }
@@ -1732,6 +1748,7 @@ func (ds DataSource) Sync() error {
 /*      Driver functions                                                */
 /* -------------------------------------------------------------------- */
 
+// type OGRDriver
 type OGRDriver struct {
     cval C.OGRSFDriverH
 }
@@ -1833,14 +1850,17 @@ func OGRDriverByName(name string) OGRDriver {
 /*      Style manager functions                                         */
 /* -------------------------------------------------------------------- */
 
+// StyleMgr
 type StyleMgr struct {
     cval C.OGRStyleMgrH
 }
 
+// StyleTool
 type StyleTool struct {
     cval C.OGRStyleToolH
 }
 
+// StyleTable
 type StyleTable struct {
     cval C.OGRStyleTableH
 }
