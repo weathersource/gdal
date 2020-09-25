@@ -1296,7 +1296,10 @@ func (feature Feature) SetFieldBinary(index int, value []uint8) {
         feature.cval,
         C.int(index),
         C.int(len(value)),
-        (*C.GByte)(unsafe.Pointer(&value[0])),
+		// JDK: Removed per: https://github.com/lukeroth/gdal/pull/54/files
+		//(*C.GByte)(unsafe.Pointer(&value[0])),
+		// JDK: Added per: https://github.com/lukeroth/gdal/pull/54/files
+		unsafe.Pointer(&value[0]),
     )
 }
 
